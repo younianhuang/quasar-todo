@@ -24,24 +24,45 @@
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+        v-model="leftDrawerOpen"
+        show-if-above
+        :width="300"
+        :breakpoint="900"
+      >
+        <q-scroll-area style="height: calc(100% - 176px); margin-top: 176px; border-right: 1px solid #ddd">
+          <q-list padding>
+            <q-item clickable v-ripple to="/">
+              <q-item-section avatar>
+                <q-icon name="list" />
+              </q-item-section>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+              <q-item-section>
+                Todo
+              </q-item-section>
+            </q-item>
+
+            <q-item active clickable v-ripple to="/help">
+              <q-item-section avatar>
+                <q-icon name="help" />
+              </q-item-section>
+
+              <q-item-section>
+                Help
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-scroll-area>
+
+        <q-img class="absolute-top" src="../assets/universe.jpg" style="height: 176px">
+          <div class="absolute-bottom bg-transparent">
+            <q-avatar size="64px" class="q-mb-sm">
+              <img src="../assets/nolan.png">
+            </q-avatar>
+            <div class="text-weight-bold">Nolan</div>
+            <div>@github</div>
+          </div>
+        </q-img>
+      </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -51,7 +72,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import EssentialLink from 'components/EssentialLink.vue';
+// import EssentialLink from 'components/EssentialLink.vue';
 import { date } from 'quasar'
 
 const linksList = [
@@ -101,10 +122,10 @@ const linksList = [
 
 export default defineComponent({
   name: 'MainLayout',
-
+/*
   components: {
     EssentialLink
-  },
+  }, */
 
   data() {
     return {
@@ -122,7 +143,7 @@ export default defineComponent({
   computed: {
     currnetDate() {
       const timeStamp = Date.now()
-      return date.formatDate(timeStamp, 'dddd MM DD YYYY')
+      return date.formatDate(timeStamp, 'dddd YYYY/MM/DD')
     }
   }
 });
