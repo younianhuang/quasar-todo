@@ -10,13 +10,17 @@
           aria-label="Menu"
           @click="toggleLeftDrawer"
         />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <div class="q-px-md q-py-md absolute-right">Quasar v{{ $q.version }}</div>
       </q-toolbar>
+      <div class="q-mx-lg q-my-lg">
+          <div class="text-h3">Todo</div>
+          <div class="text-subtitle1">{{ currnetDate }}</div>
+      </div>
+      <q-img
+        src="../assets/universe.jpg"
+        class="header-image absolute-top"
+        >
+      </q-img>
     </q-header>
 
     <q-drawer
@@ -48,6 +52,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import EssentialLink from 'components/EssentialLink.vue';
+import { date } from 'quasar'
 
 const linksList = [
   {
@@ -112,6 +117,22 @@ export default defineComponent({
     toggleLeftDrawer () {
       this.leftDrawerOpen = !this.leftDrawerOpen
     }
+  },
+
+  computed: {
+    currnetDate() {
+      const timeStamp = Date.now()
+      return date.formatDate(timeStamp, 'dddd MM DD YYYY')
+    }
   }
 });
 </script>
+
+<style lang="scss">
+.header-image {
+  height: 100%;
+  z-index: -1;
+  opacity: 0.2;
+  filter: grayscale(100%);
+}
+</style>
