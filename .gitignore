@@ -33,3 +33,4 @@ yarn-error.log*
 *.sln
 .vscode/extensions.json
 .vscode/settings.json
+src-electron

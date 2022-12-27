@@ -55,16 +55,6 @@ export default defineComponent({
     return {
       newTask: '',
       tasks: new Array<Task>()
-      // tasks: [
-      //   {
-      //     title: 'write code',
-      //     done: false
-      //   },
-      //   {
-      //     title: 'test code',
-      //     done: false
-      //   }
-      // ]
     }
   },
   methods:
